@@ -17,6 +17,11 @@
       args:
         chdir: /tmp/terraform-scripts
 
+    - name: Plan Terraform
+      command: terraform plan
+      args:
+        chdir: /tmp/terraform-scripts    
+
     - name: Apply Terraform configuration
       command: terraform apply -auto-approve
       args:
