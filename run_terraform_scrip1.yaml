@@ -2,10 +2,7 @@
   hosts: localhost
   tasks:
     - name: Log in to Azure CLI using Tower credential
-      ansible.builtin.azure_login:
-        client_id: "{{ lookup('tower_credential', 'AZURE_CLIENT_ID', 'abhitets') }}"
-        secret: "{{ lookup('tower_credential', 'AZURE_SECRET', 'abhitets') }}"
-        tenant: "{{ lookup('tower_credential', 'AZURE_TENANT', 'abhitets') }}"
+      command: az login
       register: login_output
     - name: Clone the Terraform script repository
       git:
