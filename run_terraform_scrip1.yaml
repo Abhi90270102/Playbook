@@ -8,17 +8,14 @@
       git:
         repo: 'https://github.com/Abhi90270102/scripttf.git'
         dest: /tmp/terraform-scripts
-
     - name: Initialize Terraform
       command: terraform init
       args:
         chdir: /tmp/terraform-scripts
-
     - name: Plan Terraform
       command: terraform plan
       args:
-        chdir: /tmp/terraform-scripts    
-
+        chdir: /tmp/terraform-scripts
     - name: Apply Terraform configuration
       command: terraform apply -auto-approve
       args:
