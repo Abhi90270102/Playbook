@@ -1,0 +1,17 @@
+- name: Run Terraform script from GitHub
+  hosts: localhost
+  tasks:
+    - name: Clone the Terraform script repository
+      git:
+        repo: 'https://github.com/Abhi90270102/scripttf.git'
+        dest: /tmp/terraform-scripts
+
+    - name: Initialize Terraform
+      command: terraform init
+      args:
+        chdir: /tmp/terraform-scripts
+
+    - name: Apply Terraform configuration
+      command: terraform apply -auto-approve
+      args:
+        chdir: /tmp/terraform-scripts
