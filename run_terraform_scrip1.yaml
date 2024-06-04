@@ -1,12 +1,13 @@
 - name: Run Terraform script from GitHub
   hosts: localhost
   tasks:
+  
     - name: Log in to Azure CLI using Service Principal
-      azure.azcollection.azure_rm_login:
-        client_id: "d5e0bf8b-32cf-4e36-8829-af5d6b7cf1f4"
-        secret: "j6j8Q~GcnQnUV3PHdH4OQICWlP3nZT2tHwAjZc4W"
-        subscription_id: "2c094ea9-b9f0-43f6-b6b0-396b9220d6bd"
-        tenant: "1bf2a47e-8fc8-4f46-9624-62a2dd160b2c"
+      ansible.builtin.azure_login:
+        client_id: "{{ lookup('tower_credential', 'AZURE_CLIENT_ID', 'abhitets') }}"
+        secret: "{{ lookup('tower_credential', 'AZURE_SECRET', 'abhitets') }}"
+        tenant: "{{ lookup('tower_credential', 'AZURE_TENANT', 'abhitets') }}"
+      register: login_output
         
     - name: Clone the Terraform script repository
       git:
