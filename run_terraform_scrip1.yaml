@@ -3,7 +3,7 @@
   tasks:
   
     - name: Log in to Azure CLI using Service Principal
-      ansible.builtin.azure_login:
+      azure.azcollection.azure_rm_login:
         client_id: "{{ lookup('tower_credential', 'AZURE_CLIENT_ID', 'abhitets') }}"
         secret: "{{ lookup('tower_credential', 'AZURE_SECRET', 'abhitets') }}"
         tenant: "{{ lookup('tower_credential', 'AZURE_TENANT', 'abhitets') }}"
